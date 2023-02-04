@@ -8,13 +8,12 @@ todo_list_data = [{"id":1, "name":"write todo list app"}]
 def main():
     return "hello world"
 
-@app.route(rule='/get_data', methods=['GET'])
-def get_data():
-    return jsonify({
-        "name":"KAI", 
-        "session":"3rd",
-        "teacher":"awais"})
-
+@app.route(rule='/todo/api/v1/create_todo', methods=['POST'])
+def create_todo():
+    if request.method == "POST":
+        data = request.get_json()
+        return jsonify(data)
+    
 @app.route(rule='/pagination/<int:number>/', methods=['GET'])
 def pagination(number):
     return f"on page: {number}"
